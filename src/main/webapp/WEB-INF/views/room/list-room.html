@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Room</title>
+</head>
+<body>
+<a href="/create-room">Create new room</a>
+<h1>Rooms</h1>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Image</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <!--/*@thymesVar id="rooms" type=""*/-->
+    <th:block th:each="room : ${rooms}">
+        <tr>
+            <td th:text="${room.name}"></td>
+            <td th:text="${room.price}"></td>
+            <td th:text="${room.status}"></td>
+
+            <td><img width="150px" height="150px" th:src="@{'/i/' + ${room.image}}"></td>
+            <td> <a th:href="@{/edit-room/__${room.id}__}">Edit</a></td>
+            <td> <a th:href="@{/delete-room/__${room.id}__}">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

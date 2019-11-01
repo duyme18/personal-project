@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete room</title>
+</head>
+<body>
+<h1>Delete room</h1>
+<h2>Are you sure?</h2>
+<p>
+    <a href="/list-room">Room list</a>
+</p>
+<form th:action="@{/delete-room}" th:object="${room}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>Room name:</td>
+            <td th:text="${room.name}"></td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td th:text="${room.price}"></td>
+        </tr>
+
+        <tr>
+            <td>Status:</td>
+            <td th:text="${room.status}"></td>
+        </tr>
+        <tr>
+            <td>Image</td>
+            <td><img th:src="@{'/i/' + ${room.image}}" width="150px" height="150px"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Delete room"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
