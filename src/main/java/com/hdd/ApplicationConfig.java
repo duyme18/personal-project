@@ -1,6 +1,10 @@
 package com.hdd;
 
+import com.hdd.service.CustomerService;
+import com.hdd.service.OrderService;
 import com.hdd.service.RoomService;
+import com.hdd.service.impl.CustomerServiceImpl;
+import com.hdd.service.impl.OrderServiceImpl;
 import com.hdd.service.impl.RoomServiceImpl;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +63,16 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     @Bean
     public RoomService roomService() {
         return new RoomServiceImpl();
+    }
+
+    @Bean
+    public OrderService orderService() {
+        return new OrderServiceImpl();
+    }
+
+    @Bean
+    public CustomerService customerService() {
+        return new CustomerServiceImpl();
     }
 
     //Thymeleaf Configuration

@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit order</title>
+</head>
+<body>
+<h1>Edit order</h1>
+<p>
+    <a href="/list-order">Order list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-order}" th:object="${order}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>  <tr>
+            <td>Check-in:</td>
+            <td><input type="text" th:field="*{checkin}"/></td>
+        </tr>  <tr>
+            <td>Check-out:</td>
+            <td><input type="text" th:field="*{checkout}"/></td>
+        </tr>  <tr>
+            <td>Day create:</td>
+            <td><input type="text" th:field="*{dayCreate}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Update order"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
