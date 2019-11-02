@@ -5,12 +5,13 @@ import com.hdd.model.Order;
 import com.hdd.service.CustomerService;
 import com.hdd.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Optional;
 
 @Controller
 public class CustomerController {
@@ -23,14 +24,27 @@ public class CustomerController {
     public Iterable<Order> orders() {
         return orderService.findAll();
     }
+    @RequestMapping("/list-customer")
+    public ModelAndView getAllProduct(@RequestParam("s") Optional<String> s, Pageable pageable) {
 
-    @GetMapping("/list-customer")
-    public ModelAndView listCustomers() {
-        Iterable<Customer> customers = customerService.findAll();
+        Page<Customer> customers;
+        if(s.isPresent()){
+            customers = customerService.findAllByNameContaining(s.get(),pageable);
+        } else {
+            customers = customerService.findAll(pageable);
+        }
         ModelAndView modelAndView = new ModelAndView("/customer/list-customer");
-        modelAndView.addObject("customers", customers);
+        modelAndView.addObject("customers",customers);
+
         return modelAndView;
     }
+//    @GetMapping("/list-customer")
+//    public ModelAndView listCustomers() {
+//        Iterable<Customer> customers = customerService.findAll();
+//        ModelAndView modelAndView = new ModelAndView("/customer/list-customer");
+//        modelAndView.addObject("customers", customers);
+//        return modelAndView;
+//    }
 
     @GetMapping("/create-customer")
     public ModelAndView showCreateForm() {
