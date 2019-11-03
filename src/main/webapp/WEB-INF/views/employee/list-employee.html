@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee</title>
+</head>
+<body>
+<a href="/create-employee">Create new employee</a>
+<h1>Employees</h1>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Birthday</th>
+        <th>Gender</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Avatar</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <!--/*@thymesVar id="employees" type=""*/-->
+    <th:block th:each="employee : ${employees}">
+        <tr>
+            <td th:text="${employee.name}"></td>
+            <td th:text="${employee.birthday}"></td>
+            <td th:text="${employee.gender}"></td>
+            <td th:text="${employee.address}"></td>
+
+            <td><img width="150px" height="150px" th:src="@{'/i/' + ${employee.avatar}}"></td>
+            <td> <a th:href="@{/edit-employee/__${employee.id}__}">Edit</a></td>
+            <td> <a th:href="@{/delete-employee/__${employee.id}__}">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

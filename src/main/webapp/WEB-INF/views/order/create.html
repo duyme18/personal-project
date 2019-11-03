@@ -20,15 +20,17 @@
         </tr>
         <tr>
             <td>Check-in:</td>
-            <td><input type="text" th:field="*{checkin}"/></td>
+            <td><input type="datetime-local" value="2019-11-01T07:00" min="2019-11-01T00:00" max="2050-12-31T07:00"
+                       th:field="*{checkin}"/></td>
         </tr>
         <tr>
             <td>Check-out:</td>
-            <td><input type="text" th:field="*{checkout}"/></td>
+            <td><input type="datetime-local" value="2019-11-01T07:00" min="2019-11-01T00:00" max="2050-12-31T07:00"
+                       th:field="*{checkout}"/></td>
         </tr>
         <tr>
             <td>Day create:</td>
-            <td><input type="text" th:field="*{dayCreate}"/></td>
+            <td><input type="datetime-local" th:field="*{dayCreate}"/></td>
         </tr>
         <tr>
             <td></td>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Employee</title>
+</head>
+<body>
+<h1>Create Employee:</h1>
+<p>
+    <a href="/list-employee">Employee list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-employee}" th:object="${employeeForm}" method="post" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>Employee name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>Birthday:</td>
+            <td><input type="date" th:field="*{birthday}"/></td>
+        </tr>
+        <tr>
+            <td>Gender:</td>
+            <td><input type="text" th:field="*{gender}"/></td>
+        </tr>
+        <tr>
+            <td>Address:</td>
+            <td><input type="text" th:field="*{address}"/></td>
+        </tr>
+        <tr>
+            <td>Phone:</td>
+            <td><input type="text" th:field="*{phone}"/></td>
+        </tr>
+        <tr>
+            <td>Avatar:</td>
+            <td><input type="file" th:field="*{avatar}" multiple></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create employee"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

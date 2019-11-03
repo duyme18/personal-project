@@ -1,9 +1,11 @@
 package com.hdd;
 
 import com.hdd.service.CustomerService;
+import com.hdd.service.EmployeeService;
 import com.hdd.service.OrderService;
 import com.hdd.service.RoomService;
 import com.hdd.service.impl.CustomerServiceImpl;
+import com.hdd.service.impl.EmployeeServiceImpl;
 import com.hdd.service.impl.OrderServiceImpl;
 import com.hdd.service.impl.RoomServiceImpl;
 import org.springframework.beans.BeansException;
@@ -73,6 +75,11 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     @Bean
     public CustomerService customerService() {
         return new CustomerServiceImpl();
+    }
+
+    @Bean
+    public EmployeeService employeeService() {
+        return new EmployeeServiceImpl();
     }
 
     //Thymeleaf Configuration
