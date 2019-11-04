@@ -16,7 +16,6 @@ public class Customer {
     private Date birthday;
     private String gender;
     private int phone;
-
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;

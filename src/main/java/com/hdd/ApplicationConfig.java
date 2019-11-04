@@ -1,13 +1,7 @@
 package com.hdd;
 
-import com.hdd.service.CustomerService;
-import com.hdd.service.EmployeeService;
-import com.hdd.service.OrderService;
-import com.hdd.service.RoomService;
-import com.hdd.service.impl.CustomerServiceImpl;
-import com.hdd.service.impl.EmployeeServiceImpl;
-import com.hdd.service.impl.OrderServiceImpl;
-import com.hdd.service.impl.RoomServiceImpl;
+import com.hdd.service.*;
+import com.hdd.service.impl.*;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -105,6 +99,7 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     public ThymeleafViewResolver viewResolver() {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
+        viewResolver.setCharacterEncoding("UTF-8");
         return viewResolver;
     }
 
