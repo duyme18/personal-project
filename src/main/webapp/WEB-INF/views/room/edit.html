@@ -13,7 +13,7 @@
     <p th:text="${message}"></p>
 </th:block>
 <form th:action="@{/edit-room}" th:object="${roomForm}" method="post" enctype="multipart/form-data">
-    <!--        <input th:type="hide" name="id" th:field="*{id}">-->
+    <input type="hidden" th:field="*{id}">
     <table>
         <tr>
             <td>Name:</td>
@@ -30,7 +30,7 @@
         </tr>
         <tr>
             <td>Image</td>
-            <td><img th:src="@{'/i/' + ${room.image}}"></td>
+            <td><img width="150px" height="150px" th:src="@{'/i/' + ${room.image}}"></td>
             <td><input type="file" th:field="*{image}" multiple></td>
         </tr>
 

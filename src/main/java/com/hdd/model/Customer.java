@@ -1,6 +1,9 @@
 package com.hdd.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "customers")
@@ -9,7 +12,8 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String birthday;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthday;
     private String gender;
     private int phone;
 
@@ -20,7 +24,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String name, String birthday, String gender, int phone, Order order) {
+    public Customer(String name, Date birthday, String gender, int phone, Order order) {
         this.name = name;
         this.birthday = birthday;
         this.gender = gender;
@@ -49,11 +53,11 @@ public class Customer {
         this.name = name;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Room</title>
+</head>
+<body>
+<h1>Create Room:</h1>
+<p>
+    <a href="/admin">Room list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/admin/create-room}" th:object="${roomForm}" method="post" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>Room name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td><input type="number" th:field="*{price}"/></td>
+        </tr>
+        <tr>
+            <td>Status:</td>
+            <td><input type="text" th:field="*{status}"/></td>
+        </tr>
+        <tr>
+            <td>Image:</td>
+            <td><input type="file" th:field="*{image}" multiple></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create room"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

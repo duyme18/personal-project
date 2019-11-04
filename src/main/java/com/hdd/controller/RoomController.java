@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -63,7 +60,7 @@ public class RoomController {
         Room room = roomService.findById(id);
         if (room != null) {
             ModelAndView modelAndView = new ModelAndView("/room/edit");
-            RoomForm roomForm = new RoomForm(room.getName(), room.getPrice(), room.getStatus(), null);
+            RoomForm roomForm = new RoomForm(room.getId(), room.getName(), room.getPrice(), room.getStatus(), null);
             modelAndView.addObject("room", room);
             modelAndView.addObject("roomForm", roomForm);
             return modelAndView;

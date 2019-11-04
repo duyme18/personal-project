@@ -1,6 +1,9 @@
 package com.hdd.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -9,17 +12,21 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String name;
-    private String checkin;
-    private String checkout;
-    private String dayCreate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date checkin;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date checkout;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date dayCreate;
     @OneToMany(mappedBy = "order")
     private Set<Customer> customerSet;
 
     public Order() {
     }
 
-    public Order(String name, String checkin, String checkout, String dayCreate, Set<Customer> customerSet) {
+    public Order(String name, Date checkin, Date checkout, Date dayCreate, Set<Customer> customerSet) {
         this.name = name;
         this.checkin = checkin;
         this.checkout = checkout;
@@ -43,27 +50,27 @@ public class Order {
         this.name = name;
     }
 
-    public String getCheckin() {
+    public Date getCheckin() {
         return checkin;
     }
 
-    public void setCheckin(String checkin) {
+    public void setCheckin(Date checkin) {
         this.checkin = checkin;
     }
 
-    public String getCheckout() {
+    public Date getCheckout() {
         return checkout;
     }
 
-    public void setCheckout(String checkout) {
+    public void setCheckout(Date checkout) {
         this.checkout = checkout;
     }
 
-    public String getDayCreate() {
+    public Date getDayCreate() {
         return dayCreate;
     }
 
-    public void setDayCreate(String dayCreate) {
+    public void setDayCreate(Date dayCreate) {
         this.dayCreate = dayCreate;
     }
 

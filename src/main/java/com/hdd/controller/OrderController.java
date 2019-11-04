@@ -85,7 +85,7 @@ public class OrderController {
     @PostMapping("/delete-order")
     public String deleteProvince(@ModelAttribute("order") Order order) {
         orderService.remove(order.getId());
-        return "redirect:provinces";
+        return "redirect:list-order";
     }
 
     @GetMapping("/view-order/{id}")

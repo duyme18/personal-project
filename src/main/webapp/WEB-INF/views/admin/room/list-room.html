@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Room</title>
+</head>
+<body>
+<a href="/admin/create-room">Create new room</a>
+<h1> Dear <span th:text="${user}"></span> Welcome to Admin Page</h1>
+<div sec:authorize="isAuthenticated()">
+    <a th:href="@{/}">Home</a> | <a th:href="@{/logout}">Logout</a>
+</div>
+<h1>Rooms</h1>
+<form>
+    Search by room:
+    <input name="s" type="text"/>
+    <input type="submit" value="Search"/>
+</form>
+<br/>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Image</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <!--/*@thymesVar id="rooms" type=""*/-->
+    <th:block th:each="room : ${rooms}">
+        <tr>
+            <td th:text="${room.name}"></td>
+            <td th:text="${room.price}"></td>
+            <td th:text="${room.status}"></td>
+            <td><img width="150px" height="150px" th:src="@{'/i/' + ${room.image}}"></td>
+            <td><a th:href="@{/admin/edit-room/__${room.id}__}">Edit</a></td>
+            <td><a th:href="@{/admin/delete-room/__${room.id}__}">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+<div>
+    <a th:href="@{'/admin'(page=${rooms.number - 1})}" th:if="${rooms.hasPrevious()}">Previous</a>
+    <span th:text="${rooms.number + 1}"></span>/<span th:text="${rooms.totalPages}"></span>
+    <a th:href="@{'/admin'(page=${rooms.number + 1})}" th:if="${rooms.hasNext()}">Next</a>
+</div>
+</body>
+</html>

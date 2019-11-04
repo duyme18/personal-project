@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit room</title>
+</head>
+<body>
+<h1>Edit Room</h1>
+<p>
+    <a href="/admin">List Room</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/admin/edit-room}" th:object="${roomForm}" method="post" enctype="multipart/form-data">
+    <!--        <input th:type="hide" name="id" th:field="*{id}">-->
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+
+        <tr>
+            <td>Price:</td>
+            <td><input type="number" th:field="*{price}"/></td>
+        </tr>
+        <tr>
+            <td>Status:</td>
+            <td><input type="text" th:field="*{status}"/></td>
+        </tr>
+        <tr>
+            <td>Image</td>
+            <td><img th:src="@{'/i/' + ${room.image}}"></td>
+            <td><input type="file" th:field="*{image}" multiple></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Update room"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

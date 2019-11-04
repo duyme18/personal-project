@@ -18,13 +18,14 @@
         <th>Edit</th>
         <th>Delete</th>
     </tr>
-    <!--/*@thymesVar id="employees" type=""*/-->
+    <!--/*@thymesVar id="employees  " type=""*/-->
     <th:block th:each="employee : ${employees}">
         <tr>
             <td th:text="${employee.name}"></td>
             <td th:text="${employee.birthday}"></td>
             <td th:text="${employee.gender}"></td>
             <td th:text="${employee.address}"></td>
+            <td th:text="${employee.phone}"></td>
 
             <td><img width="150px" height="150px" th:src="@{'/i/' + ${employee.avatar}}"></td>
             <td> <a th:href="@{/edit-employee/__${employee.id}__}">Edit</a></td>

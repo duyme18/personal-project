@@ -1,11 +1,15 @@
 package com.hdd.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Date;
 
 public class EmployeeForm {
     private Long id;
     private String name;
-    private String birthday;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthday;
     private String gender;
     private String address;
     private int phone;
@@ -14,7 +18,7 @@ public class EmployeeForm {
     public EmployeeForm() {
     }
 
-    public EmployeeForm(String name, String birthday, String gender, String address, int phone, MultipartFile avatar) {
+    public EmployeeForm(String name, Date birthday, String gender, String address, int phone, MultipartFile avatar) {
         this.name = name;
         this.birthday = birthday;
         this.gender = gender;
@@ -23,7 +27,7 @@ public class EmployeeForm {
         this.avatar = avatar;
     }
 
-    public EmployeeForm(Long id, String name, String birthday, String gender, String address, int phone, MultipartFile avatar) {
+    public EmployeeForm(Long id, String name, Date birthday, String gender, String address, int phone, MultipartFile avatar) {
         this.id = id;
         this.name = name;
         this.birthday = birthday;
@@ -57,11 +61,11 @@ public class EmployeeForm {
         this.name = name;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

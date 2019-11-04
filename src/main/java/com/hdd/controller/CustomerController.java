@@ -24,17 +24,18 @@ public class CustomerController {
     public Iterable<Order> orders() {
         return orderService.findAll();
     }
+
     @RequestMapping("/list-customer")
     public ModelAndView getAllProduct(@RequestParam("s") Optional<String> s, Pageable pageable) {
 
         Page<Customer> customers;
-        if(s.isPresent()){
-            customers = customerService.findAllByNameContaining(s.get(),pageable);
+        if (s.isPresent()) {
+            customers = customerService.findAllByNameContaining(s.get(), pageable);
         } else {
             customers = customerService.findAll(pageable);
         }
         ModelAndView modelAndView = new ModelAndView("/customer/list-customer");
-        modelAndView.addObject("customers",customers);
+        modelAndView.addObject("customers", customers);
 
         return modelAndView;
     }

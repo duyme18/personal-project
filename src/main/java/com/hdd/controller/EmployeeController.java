@@ -36,7 +36,7 @@ public class EmployeeController {
     public ModelAndView saveBook(@ModelAttribute EmployeeForm employeeForm) {
         MultipartFile multipartFile = employeeForm.getAvatar();
         String fileName = multipartFile.getOriginalFilename();
-        String fileUpload = env.getProperty("file_upload1").toString();
+        String fileUpload = env.getProperty("file_upload").toString();
         try {
             FileCopyUtils.copy(employeeForm.getAvatar().getBytes(), new File(fileUpload + fileName));
         } catch (IOException e) {
@@ -64,7 +64,7 @@ public class EmployeeController {
         Employee employee = employeeService.findById(id);
         if (employee != null) {
             ModelAndView modelAndView = new ModelAndView("/employee/edit");
-            EmployeeForm employeeForm = new EmployeeForm(employee.getName(), employee.getBirthday(), employee.getGender(), employee.getAddress(), employee.getPhone(), null);
+            EmployeeForm employeeForm = new EmployeeForm(employee.getId(), employee.getName(), employee.getBirthday(), employee.getGender(), employee.getAddress(), employee.getPhone(), null);
             modelAndView.addObject("employee", employee);
             modelAndView.addObject("employeeForm", employeeForm);
             return modelAndView;
